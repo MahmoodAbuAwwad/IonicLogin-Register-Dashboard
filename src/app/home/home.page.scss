@@ -1,10 +1,22 @@
+h1 {
+    width: 50%;
+    margin-left: 20%;
+}
+
+ion-content {
+    background-color: black;
+}
+
 input {
     background-color: transparent;
     color: white;
+    width: 100%;
 }
 
 ion-item {
-    margin: 2vh 0px;
+    margin: 0px;
+    background-color: transparent;
+    height: 10vh;
 }
 
 ion-button {
@@ -38,6 +50,11 @@ ion-button {
     text-decoration: none;
 }
 
+ion-input {
+    margin-right: 0px !important;
+    width: 100%;
+}
+
 .brand-Container {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
@@ -45,15 +62,16 @@ ion-button {
     margin-top: 5vh;
 }
 
-.brand-Container img {
-    border-radius: 50px;
+.brand-Container ion-icon {
+    border-radius: 50%;
+    width: 170px;
     height: 25vh;
 }
 
 .form-group {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
-    margin-bottom: 5vh;
+    margin-bottom: 3vh;
 }
 
 .login {
@@ -62,7 +80,23 @@ ion-button {
     align-items: center;
 }
 
-input.ng-invalid.ng-touched,
 .warning {
     color: red;
+    display: block;
+}
+
+.headerSingup {
+    text-align: center;
+    justify-content: center;
+    padding-top: 2vh;
+    margin: 2vh 0px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+ion-row {
+    justify-content: center;
+}
+
+ion-row ion-item {
+    width: 100%;
 }

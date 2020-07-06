@@ -1,106 +1,108 @@
-<ion-content [fullscreen]="true">
-    <div class="login " *ngIf="Login">
+<div style="background-color: red;">
+    <ion-content [fullscreen]="true">
+        <div class="login" *ngIf="Login">
 
-        <div class="brand-Container">
-            <!-- <img src="../assets/github.png" alt=""> -->
+            <div class="brand-Container">
+                <!-- <img src="../assets/github.png" alt=""> -->
 
-            <ion-icon name="logo-snapchat"></ion-icon>
+                <ion-icon name="logo-snapchat"></ion-icon>
+
+            </div>
+
+            <form (ngSubmit)="onSubmitLogin(f)" #f="ngForm">
+                <div class="form-group">
+                    <ion-item>
+                        <ion-label position="floating ">
+                            Email
+                        </ion-label>
+                        <ion-input type="email " class="form-control" name="email" email ngModel required #email="ngModel"></ion-input>
+                    </ion-item>
+                    <span class="warning" [style.visibility]="(!email.valid && email.touched)||emailIncorrect ? 'visible' :'hidden'"> Please enter a valid email</span>
+                    <ion-item>
+                        <ion-label position="floating ">
+                            Password
+                        </ion-label>
+                        <ion-input type="password" class="form-control" name="password" #password="ngModel" ngModel minlength='6' required></ion-input>
+                    </ion-item>
+                    <span class="warning" [style.visibility]="(!password.valid && password.touched) || passwordIncorrect ? 'visible' : 'hidden'"> Incorrct password</span>
+
+                    <ion-button type="submit " [disabled]="!f.valid"> Log in</ion-button>
+
+                    <p>Don't have an account? <a (click)="navigateSignUp()">Sign Up</a> </p>
+                </div>
+            </form>
 
         </div>
 
-        <form (ngSubmit)="onSubmitLogin(f)" #f="ngForm">
-            <div class="form-group">
-                <ion-item>
-                    <ion-label position="floating ">
-                        Email
-                    </ion-label>
-                    <ion-input type="email " class="form-control" name="email" email ngModel required #email="ngModel"></ion-input>
-                </ion-item>
-                <span class="warning" [style.visibility]="(!email.valid && email.touched)||emailIncorrect ? 'visible' :'hidden'"> Please enter a valid email</span>
-                <ion-item>
-                    <ion-label position="floating ">
-                        Password
-                    </ion-label>
-                    <ion-input type="password" class="form-control" name="password" #password="ngModel" ngModel minlength='6' required></ion-input>
-                </ion-item>
-                <span class="warning" [style.visibility]="(!password.valid && password.touched) || passwordIncorrect ? 'visible' : 'hidden'"> Incorrct password</span>
-
-                <ion-button type="submit " [disabled]="!f.valid"> Log in</ion-button>
-
-                <p>Don't have an account? <a (click)="navigateSignUp()">Sign Up</a> </p>
+        <div *ngIf="!Login" class="signUp">
+            <div class="headerSingup">
+                <h1>Join Our Community Now!</h1>
             </div>
-        </form>
 
-    </div>
+            <form (ngSubmit)="onSubmitSignUp(tf)" #tf="ngForm">
+                <div class="signUpForm form-group">
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col>
+                                <ion-item>
+                                    <ion-label position="floating ">
+                                        First Name
+                                    </ion-label>
+                                    <ion-input type="text" class="form-control" name="fname" minlength='2' #fname="ngModel" ngModel minlength='2' required></ion-input>
+                                </ion-item>
+                                <span class="warning" [style.visibility]="!fname.valid &&fname.touched ? 'visible':'hidden'"> First Name is not valid  </span>
+                            </ion-col>
+                            <ion-col>
+                                <ion-item>
+                                    <ion-label position="floating ">
+                                        Last Name
+                                    </ion-label>
+                                    <ion-input type="text " class="form-control" name="lname" #lname="ngModel" ngModel minlength='2' required></ion-input>
+                                </ion-item>
+                                <span class="warning" [style.visibility]="!lname.valid &&lname.touched ? 'visible':'hidden'"> Last Name is not valid </span>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <ion-item>
+                                    <ion-label position="floating ">
+                                        Email
+                                    </ion-label>
+                                    <ion-input type="email " class="form-control" name="email" email ngModel required #email="ngModel"></ion-input>
+                                </ion-item>
+                                <span class="warning" [style.visibility]="(!email.valid && email.touched)||emailFound ? 'visible' :'hidden'"> Please enter a valid email</span>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-item>
+                                <ion-label position="floating ">
+                                    Password
+                                </ion-label>
+                                <ion-input type="password" class="form-control" name="password" #password="ngModel" ngModel minlength='6' required></ion-input>
+                            </ion-item>
+                            <span class="warning" [style.visibility]="(!password.valid && password.touched) ? 'visible' : 'hidden'">Invalid Password</span>
+                        </ion-row>
+                        <ion-row>
+                            <ion-item>
+                                <ion-label position="floating ">
+                                    re-type Password
+                                </ion-label>
+                                <ion-input type="password" class="form-control" name="RePassword" #RePassword="ngModel" ngModel minlength='6' required></ion-input>
+                            </ion-item>
+                            <span class="warning" [style.visibility]="wrongPasswords || wrongPasswords">Passwords doesn't match!</span>
 
-    <div *ngIf="!Login" class="signUp">
-        <div class="headerSingup">
-            <h1>Join Our Community Now!</h1>
+                        </ion-row>
+                        <ion-row>
+                            <ion-button style="display: block;" type="submit " [disabled]="!tf.valid"> Sign Up</ion-button>
+
+                            <p>Already have an account? <a (click)="navigateLogin()">Log In</a> </p>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+            </form>
+
         </div>
 
-        <form (ngSubmit)="onSubmitSignUp(tf)" #tf="ngForm">
-            <div class="signUpForm form-group">
-                <ion-grid>
-                    <ion-row>
-                        <ion-col>
-                            <ion-item>
-                                <ion-label position="floating ">
-                                    First Name
-                                </ion-label>
-                                <ion-input type="text" class="form-control" name="fname" minlength='2' #fname="ngModel" ngModel minlength='2' required></ion-input>
-                            </ion-item>
-                            <span class="warning" [style.visibility]="!fname.valid &&fname.touched ? 'visible':'hidden'"> not valid First Name </span>
-                        </ion-col>
-                        <ion-col>
-                            <ion-item>
-                                <ion-label position="floating ">
-                                    Last Name
-                                </ion-label>
-                                <ion-input type="text " class="form-control" name="lname" #lname="ngModel" ngModel minlength='2' required></ion-input>
-                            </ion-item>
-                            <span class="warning" [style.visibility]="!lname.valid &&lname.touched ? 'visible':'hidden'"> not valid Last Name </span>
-                        </ion-col>
-                    </ion-row>
-                    <ion-row>
-                        <ion-col>
-                            <ion-item>
-                                <ion-label position="floating ">
-                                    Email
-                                </ion-label>
-                                <ion-input type="email " class="form-control" name="email" email ngModel required #email="ngModel"></ion-input>
-                            </ion-item>
-                            <span class="warning" [style.visibility]="(!email.valid && email.touched)||emailFound ? 'visible' :'hidden'"> Please enter a valid email</span>
-                        </ion-col>
-                    </ion-row>
-                    <ion-row>
-                        <ion-item>
-                            <ion-label position="floating ">
-                                Password
-                            </ion-label>
-                            <ion-input type="password" class="form-control" name="password" #password="ngModel" ngModel minlength='6' required></ion-input>
-                        </ion-item>
-                        <span class="warning" [style.visibility]="(!password.valid && password.touched) ? 'visible' : 'hidden'">Invalid Password</span>
-                    </ion-row>
-                    <ion-row>
-                        <ion-item>
-                            <ion-label position="floating ">
-                                Retype Password
-                            </ion-label>
-                            <ion-input type="password" class="form-control" name="RePassword" #RePassword="ngModel" ngModel minlength='6' required></ion-input>
-                        </ion-item>
-                        <span class="warning" [style.visibility]="wrongPasswords || wrongPasswords">Passwords doesn't match!</span>
 
-                    </ion-row>
-                    <ion-row>
-                        <ion-button type="submit " [disabled]="!tf.valid"> Sign Up</ion-button>
-
-                        <p>Already have an account? <a (click)="navigateLogin()">Log In</a> </p>
-                    </ion-row>
-                </ion-grid>
-            </div>
-        </form>
-
-    </div>
-
-
-</ion-content>
+    </ion-content>
+</div>

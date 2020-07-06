@@ -1,10 +1,15 @@
-h1 {
-    width: 50%;
-    margin-left: 20%;
+* {
+    color: white;
 }
 
 ion-content {
-    background-color: black;
+    --background: #fff url('../../assets/back.jpg') no-repeat center center/cover;
+}
+
+h1 {
+    width: 50%;
+    margin: 1vh 0px 4vh 20%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 input {
@@ -17,6 +22,7 @@ ion-item {
     margin: 0px;
     background-color: transparent;
     height: 10vh;
+    --background: transparent;
 }
 
 ion-button {
@@ -46,8 +52,10 @@ ion-button {
     margin: 0;
 }
 
-#container a {
+a {
     text-decoration: none;
+    cursor: pointer;
+    color: #428CFF;
 }
 
 ion-input {
@@ -74,7 +82,8 @@ ion-input {
     margin-bottom: 3vh;
 }
 
-.login {
+.login,
+.signUp {
     width: 70%;
     margin-left: 15%;
     align-items: center;

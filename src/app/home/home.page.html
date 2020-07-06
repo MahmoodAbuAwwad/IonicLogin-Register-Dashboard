@@ -1,20 +1,37 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <div class="brand-Container">
+        <img src="../assets/github.png" alt="">
+    </div>
+
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="form-group ">
+            <div class="login " *ngIf="Login ">
+                <ion-item>
+                    <ion-label position="floating ">
+                        Email
+                    </ion-label>
+                    <ion-input type="email " class="form-control" name="email" email ngModel required #email="ngModel"></ion-input>
+                </ion-item>
+                <span class="warning" *ngIf="!email.valid && email.touched"> Please enter a valid email</span>
+                <ion-item>
+                    <ion-label position="floating ">
+                        Password
+                    </ion-label>
+                    <ion-input type="password" class="form-control" name="password" #password="ngModel" ngModel minlength='6' required></ion-input>
+                </ion-item>
+                <p><span class="warning" *ngIf=" !password.valid && password.touched"> incorrct password</span></p>
+
+                <ion-button type="submit " [disabled]="!f.valid"> Log in</ion-button>
+
+                <p>Don't have an account? <a (click)="Login=false ">Sign Up</a> </p>
+            </div>
+        </div>
+    </form>
+
+
+
+    <div *ngIf="!Login ">Register</div>
+
+
 </ion-content>

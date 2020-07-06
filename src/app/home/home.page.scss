@@ -1,27 +1,68 @@
-#container {
-  text-align: center;
+input {
+    background-color: transparent;
+    color: white;
+}
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+ion-item {
+    margin: 2vh 0px;
+}
+
+ion-button {
+    margin: 3vh 0px;
+    width: 75%;
+}
+
+#container {
+    text-align: center;
+    background-color: transparent;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 40%;
+    transform: translateY(-50%);
 }
 
 #container strong {
-  font-size: 20px;
-  line-height: 26px;
+    font-size: 20px;
+    line-height: 26px;
 }
 
 #container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+    font-size: 16px;
+    line-height: 22px;
+    color: #8c8c8c;
+    margin: 0;
 }
 
 #container a {
-  text-decoration: none;
+    text-decoration: none;
+}
+
+.brand-Container {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    margin-bottom: 5vh;
+    margin-top: 5vh;
+}
+
+.brand-Container img {
+    border-radius: 50px;
+    height: 25vh;
+}
+
+.form-group {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+.login {
+    width: 70%;
+    margin-left: 15%;
+    align-items: center;
+}
+
+input.ng-invalid.ng-touched,
+.warning {
+    color: red;
 }

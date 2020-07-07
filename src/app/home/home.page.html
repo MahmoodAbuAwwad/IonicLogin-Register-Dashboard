@@ -1,14 +1,10 @@
 <div style="background-color: red;">
-    <ion-content [fullscreen]="true">
-        <div class="login" *ngIf="Login">
-
+    <ion-content [fullscreen]="true" scrollY="false" scrollX="false" scrollEvents="false">
+        <div class="login" *ngIf="page === 1">
             <div class="brand-Container">
                 <!-- <img src="../assets/github.png" alt=""> -->
-
                 <ion-icon name="logo-snapchat"></ion-icon>
-
             </div>
-
             <form (ngSubmit)="onSubmitLogin(f)" #f="ngForm">
                 <div class="form-group">
                     <ion-item>
@@ -31,14 +27,11 @@
                     <p>Don't have an account? <a (click)="navigateSignUp()">Sign Up</a> </p>
                 </div>
             </form>
-
         </div>
-
-        <div *ngIf="!Login" class="signUp">
+        <div *ngIf=" page===2 " class="signUp">
             <div class="headerSingup">
                 <h1>Join Our Community Now!</h1>
             </div>
-
             <form (ngSubmit)="onSubmitSignUp(tf)" #tf="ngForm">
                 <div class="signUpForm form-group">
                     <ion-grid>
@@ -90,19 +83,23 @@
                                 <ion-input type="password" class="form-control" name="RePassword" #RePassword="ngModel" ngModel minlength='6' required></ion-input>
                             </ion-item>
                             <span class="warning" [style.visibility]="wrongPasswords || wrongPasswords">Passwords doesn't match!</span>
-
                         </ion-row>
                         <ion-row>
                             <ion-button style="display: block;" type="submit " [disabled]="!tf.valid"> Sign Up</ion-button>
-
                             <p>Already have an account? <a (click)="navigateLogin()">Log In</a> </p>
                         </ion-row>
                     </ion-grid>
                 </div>
             </form>
-
         </div>
-
+        <div class="login" *ngIf="page===3">
+            <div class="dashboard">
+                <span> Hello &nbsp;</span>{{localStorageFirstName}} &nbsp; {{localStorageLastName}}
+                <div class="dashboard">
+                    <ion-button color="warning" (click)="onClickLogOut()">Log Out</ion-button>
+                </div>
+            </div>
+        </div>
 
     </ion-content>
 </div>
